@@ -1,0 +1,20 @@
+[project]
+name = "flightpulse"
+version = "0.1.0"
+description = "Batch ELT pipeline for flight delay analytics"
+authors = [{name = "Your Name"}]
+requires-python = ">=3.11"
+
+dependencies = [
+    "duckdb",
+    "pandas",
+    "requests"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest"
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
