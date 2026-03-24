@@ -1,4 +1,4 @@
-##️ FlightPulse
+## FlightPulse
 
 A batch ELT pipeline for flight delay analytics, built with Python, DuckDB, dbt, and GitHub Actions CI/CD.
 
@@ -10,7 +10,7 @@ FlightPulse ingests raw flight data, loads it into a local DuckDB warehouse, tra
 
 ---
 
-## Dashboard Preview
+### Dashboard Preview
 
 ### Overview
 ![Overview](assets/overview.png)
