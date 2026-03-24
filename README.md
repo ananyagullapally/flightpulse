@@ -1,5 +1,6 @@
-## FlightPulse
-[![CI](https://github.com/ananyagullapally/flightpulse/actions/workflows/ci.yml/badge.svg)](https://github.com/ananyagullapally/flightpulse/actions/workflows/ci.yml)
+## FlightPulse [![CI](https://github.com/ananyagullapally/flightpulse/actions/workflows/ci.yml/badge.svg)](https://github.com/ananyagullapally/flightpulse/actions/workflows/ci.yml) ![Python](https://img.shields.io/badge/python-3.11-blue)
+![dbt](https://img.shields.io/badge/dbt-1.11.7-orange)
+![DuckDB](https://img.shields.io/badge/duckdb-1.10.1-yellow)
 A batch ELT pipeline for flight delay analytics, built with Python, DuckDB, dbt, and GitHub Actions CI/CD.
 
 ---
