@@ -10,7 +10,7 @@ A batch ELT pipeline for flight delay analytics, built with Python, DuckDB, dbt,
 
 ### Overview
 
-FlightPulse ingests raw flight data, loads it into a local DuckDB warehouse, transforms it with dbt, and surfaces delay insights through an analytics dashboard. It demonstrates a complete, production-style data engineering workflow — from raw source to curated mart — in a fully local, lightweight environment.
+FlightPulse is a batch ELT pipeline that ingests OpenFlights route data, loads it into a local DuckDB warehouse, transforms it with dbt, and surfaces airline route analytics through a Streamlit dashboard. The pipeline is orchestrated with Prefect and tested with pytest and dbt tests, demonstrating a complete local data engineering workflow from raw source to curated mart.
 
 ---
 
@@ -33,18 +33,22 @@ FlightPulse ingests raw flight data, loads it into a local DuckDB warehouse, tra
 
 ```
 Raw Data (CSV/API)
-      │
-      ▼
-[ ingestion/ ]  ← Python scripts fetch & load data into DuckDB
-      │
-      ▼
-[ DuckDB ]      ← Local analytical warehouse (flights.db)
-      │
-      ▼
-[ flightpulse_dbt/ ]  ← dbt models: staging → intermediate → mart
-      │
-      ▼
-[ dashboard/ ]  ← Analytics layer (queries on top of dbt marts)
+│
+▼
+[ Prefect Flow ] ← Orchestration layer (task scheduling, retries)
+│
+▼
+[ ingestion/ ] ← Python ingestion pipeline
+│
+▼
+[ DuckDB ] ← Local analytical warehouse
+│
+▼
+[ flightpulse_dbt/ ] ← dbt models: staging → marts
+│
+▼
+[ dashboard/ ] ← Streamlit analytics layer
+
 ```
 
 ---
@@ -58,6 +62,7 @@ Raw Data (CSV/API)
 | Transformation | dbt-core |
 | Testing | pytest + dbt tests |
 | CI/CD | GitHub Actions |
+| Orchestration | Prefect |
 
 ---
 
@@ -66,19 +71,21 @@ Raw Data (CSV/API)
 ```
 flightpulse/
 ├── .github/
-│   └── workflows/        # CI/CD pipeline (lint, test, dbt run)
-├── ingestion/            # Python scripts to fetch and load raw data
+│ └── workflows/
+├── ingestion/ 
+├── orchestration/ 
 ├── data/
-│   └── raw/              # Raw source files (CSV)
-├── flightpulse_dbt/      # dbt project
-│   ├── models/
-│   │   ├── staging/      # Clean, typed raw sources
-│   │   ├── intermediate/ # Business logic joins
-│   │   └── marts/        # Final analytics-ready tables
-│   └── tests/            # dbt schema & data tests
-├── dashboard/            # Dashboard queries / Streamlit app
-├── tests/                # pytest unit tests for ingestion layer
-└── pyproject.toml        # Project dependencies and config
+│ └── raw/ 
+├── flightpulse_dbt/ 
+│ ├── models/
+│ │ ├── staging/ 
+│ │ └── marts/
+│ └── tests/ 
+├── dashboard/ 
+├── tests/ 
+├── assets/ 
+└── pyproject.toml
+
 ```
 
 ---
