@@ -1,8 +1,9 @@
 [project]
 name = "flightpulse"
 version = "0.1.0"
-description = "Batch ELT pipeline for flight delay analytics"
+description = "Batch ELT pipeline for flight route analytics"
 authors = [{name = "Ananya Gullapally"}]
+readme = "README.md"
 requires-python = ">=3.11"
 
 dependencies = [
@@ -13,14 +14,11 @@ dependencies = [
     "dbt-duckdb"
 ]
 
+[tool.setuptools.packages.find]
+include = ["ingestion*"]
+exclude = ["data*", "dashboard*", "flightpulse_dbt*", "tests*"]
+
 [project.optional-dependencies]
 dev = [
     "pytest"
 ]
-
-[tool.pytest.ini_options]
-testpaths = ["tests"]
-
-[tool.setuptools.packages.find]
-include = ["ingestion*"]
-exclude = ["data*", "dashboard*", "flightpulse_dbt*", "tests*"]
