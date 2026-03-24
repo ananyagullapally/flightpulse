@@ -12,16 +12,16 @@ FlightPulse ingests raw flight data, loads it into a local DuckDB warehouse, tra
 
 ### Dashboard Preview
 
-### Overview
+#### Overview
 ![Overview](assets/overview.png)
 
-###️ Top Airlines by Routes
+#### Top Airlines by Routes
 ![Airlines](assets/airlines.png)
 
 ### Most Frequent Routes
 ![Routes](assets/routes.png)
 
-### Top Airports
+#### Top Airports
 ![Airports](assets/airports.png)
 
 ---
