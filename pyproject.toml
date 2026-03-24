@@ -2,13 +2,15 @@
 name = "flightpulse"
 version = "0.1.0"
 description = "Batch ELT pipeline for flight delay analytics"
-authors = [{name = "Your Name"}]
+authors = [{name = "Ananya Gullapally"}]
 requires-python = ">=3.11"
 
 dependencies = [
     "duckdb",
     "pandas",
-    "requests"
+    "requests",
+    "streamlit",
+    "dbt-duckdb"
 ]
 
 [project.optional-dependencies]
